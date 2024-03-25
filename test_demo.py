@@ -15,7 +15,6 @@ def select_model(args, device):
     # Model ID is assigned according to the order of the submissions.
     # Different networks are trained with input range of either [0,1] or [0,255]. The range is determined manually.
     model_id = args.model_id
-    if model_id == 0:
         # # RFDN baseline, AIM 2020 Efficient SR Challenge winner
         # from models.team00_RFDN import RFDN
         # name, data_range = f"{model_id:02}_RFDN_baseline", 255.0
@@ -31,12 +30,15 @@ def select_model(args, device):
         # model_path = os.path.join('model_zoo', 'team00_swinir.pth')
         # model = SwinIR()
         # model.load_state_dict(torch.load(model_path), strict=True)
+    if model_id == 0:
 
-        # DAT baseline, ICCV 2023
-        # from models.team00_DAT import DAT
-        # name, data_range = f"{model_id:02}_DAT_baseline", 1.0
-        # model_path = os.path.join('model_zoo', 'team00_dat.pth')
-        # model = DAT()
+        DAT baseline, ICCV 2023
+        from models.team00_DAT import DAT
+        name, data_range = f"{model_id:02}_DAT_baseline", 1.0
+        model_path = os.path.join('model_zoo', 'team00_dat.pth')
+        model = DAT()
+        
+    elif model_id == 04:
         
         # HAT
         from models.team04_HAT import HAT
@@ -44,6 +46,7 @@ def select_model(args, device):
         model_path = os.path.join('model_zoo', 'team04_HAT.pth')
         model = HAT()
         model.load_state_dict(torch.load(model_path), strict=True)
+
     else:
         raise NotImplementedError(f"Model {model_id} is not implemented.")
 
