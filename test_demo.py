@@ -38,7 +38,7 @@ def select_model(args, device):
         model_path = os.path.join('model_zoo', 'team00_dat.pth')
         model = DAT()
         
-    elif model_id == 04:
+    elif model_id == 4:
         
         # HAT
         from models.team04_HAT import HAT
